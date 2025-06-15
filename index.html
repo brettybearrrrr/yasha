@@ -118,6 +118,28 @@
             cursor: pointer;
         }
 
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 11, 13, 0.98);
+                flex-direction: column;
+                padding: 1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
         /* Page container */
         .page {
             display: none;
@@ -818,14 +840,14 @@
     
     <header>
         <nav>
-            <div class="logo" onclick="showPage('home')" style="cursor: pointer;">Yasha Carpentier LICSW</div>
+            <div class="logo" onclick="showPage('home')">Yasha Carpentier LICSW</div>
             <ul class="nav-links">
-                <li><a href="javascript:void(0)" onclick="showPage('home')" class="nav-link active">Home</a></li>
-                <li><a href="javascript:void(0)" onclick="showPage('about')" class="nav-link">About</a></li>
-                <li><a href="javascript:void(0)" onclick="showPage('services')" class="nav-link">Services</a></li>
-                <li><a href="javascript:void(0)" onclick="showPage('approach')" class="nav-link">Approach</a></li>
-                <li><a href="javascript:void(0)" onclick="showPage('qualifications')" class="nav-link">Qualifications</a></li>
-                <li><a href="javascript:void(0)" onclick="showPage('contact')" class="nav-link">Contact</a></li>
+                <li><a href="#" onclick="showPage('home')" class="nav-link active">Home</a></li>
+                <li><a href="#" onclick="showPage('about')" class="nav-link">About</a></li>
+                <li><a href="#" onclick="showPage('services')" class="nav-link">Services</a></li>
+                <li><a href="#" onclick="showPage('approach')" class="nav-link">Approach</a></li>
+                <li><a href="#" onclick="showPage('qualifications')" class="nav-link">Qualifications</a></li>
+                <li><a href="#" onclick="showPage('contact')" class="nav-link">Contact</a></li>
             </ul>
             <button class="mobile-menu-btn">☰</button>
         </nav>
@@ -846,8 +868,8 @@
                 <h1>Comprehensive Mental Health Services Grounded in Clinical Excellence</h1>
                 <p class="hero-subtitle">Providing evidence-based therapeutic interventions informed by over 27 years of clinical practice. Specializing in individualized treatment approaches for individuals, couples, and families seeking meaningful psychological healing.</p>
                 <div class="hero-buttons">
-                    <button class="btn-primary" onclick="showPage('contact')" style="cursor: pointer;">Schedule Consultation</button>
-                    <button class="btn-secondary" onclick="showPage('about')" style="cursor: pointer;">Learn More</button>
+                    <button class="btn-primary" onclick="showPage('contact')">Schedule Consultation</button>
+                    <button class="btn-secondary" onclick="showPage('about')">Learn More</button>
                 </div>
             </div>
         </section>
