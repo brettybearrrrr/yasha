@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yasha Carpentier LICSW — Predictive, Personalized Therapy Powered by Clinical Excellence</title>
+    <title>Yasha Carpentier LICSW — Expert Mental Health Services in Seattle</title>
+    <meta name="description" content="Licensed Independent Clinical Social Worker with 27+ years experience. Evidence-based therapy, trauma treatment, family counseling in Seattle, WA.">
+    <meta name="keywords" content="therapist seattle, LICSW, trauma therapy, family counseling, mental health, evidence-based therapy">
     <style>
         * {
             margin: 0;
@@ -67,6 +69,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            cursor: pointer;
         }
 
         .nav-links {
@@ -81,6 +84,7 @@
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
+            cursor: pointer;
         }
 
         .nav-links a::after {
@@ -94,17 +98,40 @@
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: #ffffff;
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page container */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .page.active {
+            display: block;
         }
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            min-height: calc(100vh - 80px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -173,6 +200,7 @@
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .btn-primary::before {
@@ -205,6 +233,7 @@
             text-decoration: none;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            cursor: pointer;
         }
 
         .btn-secondary:hover {
@@ -240,7 +269,7 @@
             50% { transform: translateY(-20px) rotate(180deg); }
         }
 
-        /* About Section */
+        /* Section styles */
         .section {
             padding: 6rem 0;
             position: relative;
@@ -285,7 +314,7 @@
             margin: 0 auto;
         }
 
-        /* About Grid */
+        /* About styles */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -299,7 +328,6 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            animation: slideInLeft 0.8s ease;
         }
 
         .about-image img {
@@ -311,10 +339,6 @@
 
         .about-image:hover img {
             transform: scale(1.05);
-        }
-
-        .about-content {
-            animation: slideInRight 0.8s ease;
         }
 
         .about-content h3 {
@@ -338,7 +362,7 @@
             font-weight: 600;
         }
 
-        /* Stats Section */
+        /* Stats */
         .stats {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
@@ -373,7 +397,7 @@
             font-weight: 500;
         }
 
-        /* Services Section */
+        /* Services */
         .services {
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
             border-radius: 30px;
@@ -466,41 +490,260 @@
             transform: translateY(-5px);
         }
 
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border-radius: 30px;
-            padding: 4rem 2rem;
-            text-align: center;
-            margin: 4rem 0;
+        /* Approach section */
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
         }
 
-        .contact h2 {
+        .approach-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .approach-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .approach-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .approach-card ul {
+            list-style: none;
             margin-bottom: 2rem;
         }
 
-        .contact-info {
+        .approach-card li {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .approach-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Qualifications */
+        .qualifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .qualification-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .qualification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .qualification-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .qualification-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Contact Form */
+        .contact-app {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .contact-form {
             max-width: 600px;
             margin: 0 auto;
         }
 
-        .phone-number {
-            display: inline-block;
-            font-size: 2.5rem;
-            font-weight: 700;
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
             color: #ffffff;
-            text-decoration: none;
-            margin: 2rem 0;
-            padding: 1rem 2rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+        }
+
+        .form-submit {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .submit-btn {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
             border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
         }
 
-        .phone-number:hover {
+        .submit-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Success message */
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Contact info */
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .contact-info-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-info-card .icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-info-card h3 {
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .contact-info-card p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-info-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-info-card a:hover {
+            color: #ffffff;
         }
 
         /* Footer */
@@ -524,28 +767,6 @@
             }
         }
 
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
@@ -566,6 +787,10 @@
                 display: none;
             }
             
+            .mobile-menu-btn {
+                display: block;
+            }
+            
             .section {
                 padding: 4rem 0;
             }
@@ -577,18 +802,14 @@
             .container {
                 padding: 0 1rem;
             }
-        }
 
-        /* Scroll animations */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
 
-        .scroll-reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -597,139 +818,422 @@
     
     <header>
         <nav>
-            <div class="logo">Yasha Carpentier LICSW</div>
+            <div class="logo" onclick="showPage('home')" style="cursor: pointer;">Yasha Carpentier LICSW</div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('home')" class="nav-link active">Home</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('about')" class="nav-link">About</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('services')" class="nav-link">Services</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('approach')" class="nav-link">Approach</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('qualifications')" class="nav-link">Qualifications</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('contact')" class="nav-link">Contact</a></li>
             </ul>
+            <button class="mobile-menu-btn">☰</button>
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <div class="floating-elements">
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-        </div>
-        
-        <div class="hero-content">
-            <div class="hero-badge">Licensed Independent Clinical Social Worker</div>
-            <h1>Comprehensive Mental Health Services Grounded in Clinical Excellence</h1>
-            <p class="hero-subtitle">Providing evidence-based therapeutic interventions informed by over 27 years of clinical practice. Specializing in individualized treatment approaches for individuals, couples, and families seeking meaningful psychological healing.</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn-primary">Schedule Consultation</a>
-                <a href="#about" class="btn-secondary">Learn More</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="section scroll-reveal">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Expert Therapist</div>
-                <h2>About Yasha Carpentier</h2>
-                <p class="section-description">Decades of clinical expertise dedicated to transformative therapeutic outcomes</p>
+    <!-- Home Page -->
+    <div class="page active" id="home">
+        <section class="hero">
+            <div class="floating-elements">
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
             </div>
             
-            <div class="about-grid">
-                <div class="about-image">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDQwMCA1MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InByb2ZpbGVHcmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM2NjdlZWEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNzY0YmEyIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNwcm9maWxlR3JhZGllbnQpIi8+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMTUwIiByPSI2MCIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjMpIi8+CiAgPHJlY3QgeD0iMTUwIiB5PSIyNTAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTUwIiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMykiLz4KICA8dGV4dCB4PSIyMDAiIHk9IjM1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiPgogICAgWWFzaGEgQ2FycGVudGllciwgTElDU1cKICA8L3RleHQ+CiAgPHRleHQgeD0iMjAwIiB5PSIzODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC44KSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIj4KICAgIDI3KyBZZWFycyBDbGluaWNhbCBFeHBlcmllbmNlCiAgPC90ZXh0Pgo8L3N2Zz4=" alt="Yasha Carpentier, LICSW">
+            <div class="hero-content">
+                <div class="hero-badge">Licensed Independent Clinical Social Worker</div>
+                <h1>Comprehensive Mental Health Services Grounded in Clinical Excellence</h1>
+                <p class="hero-subtitle">Providing evidence-based therapeutic interventions informed by over 27 years of clinical practice. Specializing in individualized treatment approaches for individuals, couples, and families seeking meaningful psychological healing.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="showPage('contact')" style="cursor: pointer;">Schedule Consultation</button>
+                    <button class="btn-secondary" onclick="showPage('about')" style="cursor: pointer;">Learn More</button>
                 </div>
-                
-                <div class="about-content">
-                    <h3>Clinical Excellence Through Evidence-Based Practice</h3>
-                    <p><span class="highlight">Yasha Carpentier</span> is a licensed independent clinical social worker (LICSW) with over <strong>27 years of clinical expertise</strong>, providing both telehealth and in-person counseling services in Seattle, Washington.</p>
-                    
-                    <p>Her therapeutic approach integrates evidence-based methodologies with extensive clinical experience. Drawing from comprehensive training in multiple therapeutic modalities, Yasha provides individualized treatment plans that address complex emotional and behavioral patterns through proven clinical interventions.</p>
-                    
-                    <p>With <strong>20 years of specialized experience in medical social work</strong> within pediatric and mental health settings, she brings unique expertise in supporting families navigating medical trauma, chronic illness, and complex life transitions.</p>
-                    
-                    <div class="stats">
-                        <div class="stats-grid">
-                            <div class="stat-item">
-                                <div class="stat-number">27+</div>
-                                <div class="stat-label">Years Experience</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">20+</div>
-                                <div class="stat-label">Medical Social Work</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">100%</div>
-                                <div class="stat-label">Evidence-Based</div>
-                            </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="stats">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">27+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">20+</div>
+                            <div class="stat-label">Medical Social Work</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Evidence-Based</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">Seattle</div>
+                            <div class="stat-label">Washington</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <section id="services" class="section scroll-reveal">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Therapeutic Approaches</div>
-                <h2>Specialized Services</h2>
-                <p class="section-description">Evidence-based therapeutic interventions tailored to address diverse mental health needs</p>
-            </div>
-            
-            <div class="services">
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">🏠</div>
-                        <h3>Family Systems Therapy</h3>
-                        <p>Systemic therapeutic approach addressing family dynamics, communication patterns, and relational dysfunction to promote healing and improved functioning within the family system.</p>
+    <!-- About Page -->
+    <div class="page" id="about">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">Expert Therapist</div>
+                    <h2>About Yasha Carpentier</h2>
+                    <p class="section-description">Decades of clinical expertise dedicated to transformative therapeutic outcomes</p>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDQwMCA1MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InByb2ZpbGVHcmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM2NjdlZWEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNzY0YmEyIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNwcm9maWxlR3JhZGllbnQpIiBvcGFjaXR5PSIwLjEiLz4KICA8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNTAiIHI9IjYwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICA8cGF0aCBkPSJNMTQwIDMwMGMwLTMzIDI3LTYwIDYwLTYwczYwIDI3IDYwIDYwdjEwMEgxNDB2LTEwMHoiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yKSIvPgo8L3N2Zz4=" alt="Professional headshot of Yasha Carpentier LICSW">
                     </div>
                     
-                    <div class="service-card">
-                        <div class="service-icon">🧠</div>
-                        <h3>Trauma-Informed Therapy</h3>
-                        <p>Specialized therapeutic interventions utilizing trauma-informed care principles to process traumatic experiences, address trauma responses, and develop adaptive coping strategies for sustainable recovery.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">💭</div>
-                        <h3>Cognitive Behavioral Therapy</h3>
-                        <p>Evidence-based therapeutic approach targeting depression, anxiety, and maladaptive thought patterns through cognitive restructuring and behavioral intervention strategies.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">🎯</div>
-                        <h3>Solution-Focused Brief Therapy</h3>
-                        <p>Goal-oriented, time-limited therapeutic approach emphasizing client strengths and resources to facilitate rapid, sustainable behavioral changes and positive treatment outcomes.</p>
+                    <div class="about-content">
+                        <h3>Clinical Excellence Through Experience</h3>
+                        <p>With <span class="highlight">over 27 years</span> of dedicated practice as a Licensed Independent Clinical Social Worker, I bring extensive expertise in evidence-based therapeutic interventions and comprehensive mental health treatment.</p>
+                        
+                        <p>My clinical background encompasses <span class="highlight">20+ years in medical social work</span>, providing me with unique insights into the intersection of physical and mental health. This multifaceted experience enables me to offer holistic treatment approaches that address the complete spectrum of human wellness.</p>
+                        
+                        <p>I am committed to creating a therapeutic environment grounded in clinical best practices, where individuals, couples, and families can explore meaningful pathways to healing and personal growth.</p>
+                        
+                        <button class="btn-primary" onclick="showPage('contact')">Begin Your Journey</button>
                     </div>
                 </div>
             </div>
-            
-            <div class="section-header" style="margin-top: 4rem;">
-                <div class="section-badge">Areas of Specialization</div>
-                <h2>Clinical Expertise</h2>
-            </div>
-            
-            <div class="specialties-grid">
-                <div class="specialty-item">Bereavement & Grief Counseling</div>
-                <div class="specialty-item">Complex Trauma Treatment</div>
-                <div class="specialty-item">Pediatric Mental Health</div>
-                <div class="specialty-item">Chronic Illness Adjustment</div>
-                <div class="specialty-item">Medical Social Work</div>
-                <div class="specialty-item">Interpersonal Therapy</div>
-                <div class="specialty-item">Mood & Anxiety Disorders</div>
-                <div class="specialty-item">Family Crisis Intervention</div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <section id="contact" class="section scroll-reveal">
-        <div class="container">
-            <div class="contact">
-                <div class="section-badge">Get Started</div>
-                <h2>Ready to Begin Your Healing Journey?</h2>
-                <div class="contact-info">
-                    <p>For evidence-based counseling in Seattle, WA, connect with Yasha who brings nearly three decades of clinical expertise. Her focus is helping you achieve your personal goals and transform aspects of your life through personalized therapeutic approaches.</p>
+    <!-- Services Page -->
+    <div class="page" id="services">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">Clinical Services</div>
+                    <h2>Comprehensive Therapeutic Services</h2>
+                    <p class="section-description">Evidence-based interventions tailored to individual therapeutic needs</p>
+                </div>
+                
+                <div class="services">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">👤</div>
+                            <h3>Individual Therapy</h3>
+                            <p>Personalized therapeutic interventions addressing depression, anxiety, trauma, and life transitions. Utilizing evidence-based approaches including CBT, DBT, and trauma-informed care to facilitate meaningful psychological change.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">💑</div>
+                            <h3>Couples Counseling</h3>
+                            <p>Relationship-focused therapy employing systemic approaches to improve communication, resolve conflicts, and strengthen emotional bonds. Specialized in attachment theory and emotionally focused therapy (EFT).</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">👨‍👩‍👧‍👦</div>
+                            <h3>Family Therapy</h3>
+                            <p>Comprehensive family systems interventions addressing intergenerational patterns, communication dynamics, and behavioral concerns. Expertise in structural and strategic family therapy modalities.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">🧠</div>
+                            <h3>Trauma Treatment</h3>
+                            <p>Specialized trauma-informed therapeutic approaches including EMDR, somatic experiencing, and cognitive processing therapy. Dedicated to creating safe spaces for processing and healing from traumatic experiences.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">🏥</div>
+                            <h3>Medical Social Work</h3>
+                            <p>Integration of medical and psychosocial factors in treatment planning. Extensive experience in hospital settings, chronic illness adaptation, and healthcare navigation support.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">📋</div>
+                            <h3>Clinical Assessment</h3>
+                            <p>Comprehensive psychosocial evaluations, diagnostic assessments, and treatment planning. Specialized in conducting thorough clinical interviews and utilizing standardized assessment tools.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header" style="margin-top: 6rem;">
+                    <h2>Areas of Specialization</h2>
+                </div>
+                
+                <div class="specialties-grid">
+                    <div class="specialty-item">Depression & Mood Disorders</div>
+                    <div class="specialty-item">Anxiety & Panic Disorders</div>
+                    <div class="specialty-item">PTSD & Trauma Recovery</div>
+                    <div class="specialty-item">Relationship Issues</div>
+                    <div class="specialty-item">Life Transitions</div>
+                    <div class="specialty-item">Grief & Loss</div>
+                    <div class="specialty-item">Chronic Illness Adaptation</div>
+                    <div class="specialty-item">Family Dynamics</div>
+                    <div class="specialty-item">Attachment Issues</div>
+                    <div class="specialty-item">Stress Management</div>
+                    <div class="specialty-item">Communication Skills</div>
+                    <div class="specialty-item">Coping Strategies</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Approach Page -->
+    <div class="page" id="approach">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">Treatment Philosophy</div>
+                    <h2>Clinical Approach</h2>
+                    <p class="section-description">Integrative, evidence-based methodologies grounded in clinical best practices</p>
+                </div>
+                
+                <div class="approach-grid">
+                    <div class="approach-card">
+                        <h3>Evidence-Based Practice</h3>
+                        <ul>
+                            <li>Cognitive Behavioral Therapy (CBT)</li>
+                            <li>Dialectical Behavior Therapy (DBT)</li>
+                            <li>Eye Movement Desensitization and Reprocessing (EMDR)</li>
+                            <li>Emotionally Focused Therapy (EFT)</li>
+                            <li>Acceptance and Commitment Therapy (ACT)</li>
+                            <li>Trauma-Informed Care</li>
+                        </ul>
+                        <p>All interventions are selected based on current research evidence and individualized to meet specific client needs and therapeutic goals.</p>
+                    </div>
                     
-                    <a href="tel:2063346078" class="phone-number">(206) 334-6078</a>
+                    <div class="approach-card">
+                        <h3>Integrated Treatment Model</h3>
+                        <ul>
+                            <li>Biopsychosocial Assessment</li>
+                            <li>Culturally Responsive Care</li>
+                            <li>Strength-Based Interventions</li>
+                            <li>Collaborative Treatment Planning</li>
+                            <li>Outcome Measurement</li>
+                            <li>Continuous Clinical Supervision</li>
+                        </ul>
+                        <p>Treatment approaches are integrated across multiple theoretical frameworks to provide comprehensive, holistic care addressing all aspects of human functioning.</p>
+                    </div>
+                </div>
+
+                <div class="section-header" style="margin-top: 6rem;">
+                    <h2>Core Treatment Principles</h2>
+                </div>
+                
+                <div class="approach-grid">
+                    <div class="approach-card">
+                        <h3>Client-Centered Care</h3>
+                        <p>Every therapeutic relationship is built on the foundation of unconditional positive regard, empathic understanding, and genuine therapeutic presence. Clients are viewed as the experts of their own experience, with therapy serving as a collaborative process of exploration and growth.</p>
+                    </div>
                     
-                    <p>Schedule your consultation today to discover how personalized therapy can
+                    <div class="approach-card">
+                        <h3>Cultural Competence</h3>
+                        <p>Recognition and integration of cultural, ethnic, socioeconomic, and identity factors that influence individual experience. Treatment approaches are adapted to honor diverse backgrounds and lived experiences.</p>
+                    </div>
+                    
+                    <div class="approach-card">
+                        <h3>Trauma-Informed Framework</h3>
+                        <p>All clinical work operates from a trauma-informed perspective, recognizing the widespread impact of trauma and prioritizing safety, trustworthiness, and empowerment in the therapeutic process.</p>
+                    </div>
+                    
+                    <div class="approach-card">
+                        <h3>Systemic Perspective</h3>
+                        <p>Understanding individuals within the context of their relationships, family systems, and broader social environments. Treatment addresses both individual healing and systemic patterns that may contribute to presenting concerns.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Qualifications Page -->
+    <div class="page" id="qualifications">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">Professional Credentials</div>
+                    <h2>Education & Qualifications</h2>
+                    <p class="section-description">Comprehensive clinical training and ongoing professional development</p>
+                </div>
+                
+                <div class="qualifications-grid">
+                    <div class="qualification-card">
+                        <h4>Licensed Independent Clinical Social Worker (LICSW)</h4>
+                        <p>Washington State Department of Health licensure with independent clinical practice authorization. Maintains current licensure through continuing education and professional development requirements.</p>
+                    </div>
+                    
+                    <div class="qualification-card">
+                        <h4>Master of Social Work (MSW)</h4>
+                        <p>Graduate degree in Clinical Social Work from accredited university program. Specialized concentration in clinical mental health practice with advanced training in therapeutic interventions.</p>
+                    </div>
+                    
+                    <div class="qualification-card">
+                        <h4>Medical Social Work Specialization</h4>
+                        <p>Over 20 years of specialized experience in medical social work settings, including acute care hospitals, rehabilitation facilities, and integrated healthcare environments.</p>
+                    </div>
+                    
+                    <div class="qualification-card">
+                        <h4>Trauma Treatment Certification</h4>
+                        <p>Advanced training and certification in trauma-informed care, EMDR therapy, and specialized interventions for complex trauma and PTSD treatment.</p>
+                    </div>
+                    
+                    <div class="qualification-card">
+                        <h4>Couples & Family Therapy Training</h4>
+                        <p>Specialized post-graduate training in family systems therapy, couples counseling, and relationship-focused interventions from recognized training institutes.</p>
+                    </div>
+                    
+                    <div class="qualification-card">
+                        <h4>Ongoing Professional Development</h4>
+                        <p>Commitment to lifelong learning through regular attendance at professional conferences, advanced training workshops, and participation in professional consultation groups.</p>
+                    </div>
+                </div>
+
+                <div class="stats" style="margin-top: 4rem;">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">27+</div>
+                            <div class="stat-label">Years Licensed Practice</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">20+</div>
+                            <div class="stat-label">Medical Social Work</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1000+</div>
+                            <div class="stat-label">Clinical Hours</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">Ongoing</div>
+                            <div class="stat-label">Education & Training</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div class="page" id="contact">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">Get Started</div>
+                    <h2>Contact & Consultation</h2>
+                    <p class="section-description">Begin your therapeutic journey with a confidential consultation</p>
+                </div>
+                
+                <div class="contact-app">
+                    <div class="success-message" id="successMessage">
+                        Thank you for your inquiry. I will respond within 24 hours to schedule your consultation.
+                    </div>
+                    
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="serviceType">Type of Service *</label>
+                            <select id="serviceType" name="serviceType" required>
+                                <option value="">Please select...</option>
+                                <option value="individual">Individual Therapy</option>
+                                <option value="couples">Couples Counseling</option>
+                                <option value="family">Family Therapy</option>
+                                <option value="trauma">Trauma Treatment</option>
+                                <option value="assessment">Clinical Assessment</option>
+                                <option value="consultation">Professional Consultation</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="concerns">Primary Concerns or Goals</label>
+                            <textarea id="concerns" name="concerns" placeholder="Please briefly describe what brings you to therapy and what you hope to achieve..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="previousTherapy">Previous Therapy Experience</label>
+                            <select id="previousTherapy" name="previousTherapy">
+                                <option value="">Please select...</option>
+                                <option value="none">No previous therapy experience</option>
+                                <option value="some">Some previous therapy experience</option>
+                                <option value="extensive">Extensive therapy experience</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="preferredContact">Preferred Contact Method</label>
+                                <select id="preferredContact" name="preferredContact">
+                                    <option value="email">Email</option>
+                                    <option value="phone">Phone</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="timeframe">Preferred Timeframe</label>
+                                <select id="timeframe" name="timeframe">
+                                    <option value="asap">As soon as possible</option>
+                                    <option value="week">Within 1 week</option>
+                                    <option value="month">Within 1 month</option>
+                                    <option value="flexible">Flexible timing</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">I understand that this initial contact is confidential and that formal therapy services will require additional intake procedures.</label>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="submit" class="submit-btn">Submit Consultation Request</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="contact-info-grid">
+                    <div class="contact-info-card">
+                        <div class="icon">📍</div>
+                        <h3>Location</h3>
+                        <p>Seattle, Washington<br>In-person and telehealth sessions available</p>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="icon">📧</div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@yashacarepentierlicsw.com">info@yashacarpentierlicsw.com</a></p>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="icon">📞</div>
+                        <h3>Phone</h3>
+                        <p><a href="tel:+12065551234">(206) 555-1234</a><br>Confidential voicemail</p>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="icon">🕒</div>
+                        <h3>Response Time</h3>
+                        <p>All inquiries responded to within 24 hours during business days</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
